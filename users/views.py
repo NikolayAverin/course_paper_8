@@ -6,6 +6,7 @@ from users.serializers import UserSerializer
 
 
 class UserCreateApiView(CreateAPIView):
+    """Создание нового пользователя"""
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (AllowAny,)
@@ -18,10 +19,12 @@ class UserCreateApiView(CreateAPIView):
 
 
 class UserListApiView(ListAPIView):
+    """Получение списка всех пользователей"""
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
 class UserRetrieveApiView(RetrieveAPIView):
+    """Получение информации о конкретном пользователе"""
     queryset = User.objects.all()
     serializer_class = UserSerializer

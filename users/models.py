@@ -4,6 +4,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class User(AbstractUser):
+    """Модель пользователя"""
     username = None
     email = models.EmailField(
         unique=True, verbose_name="Почта", help_text="Укажите свою почту"
@@ -28,6 +29,7 @@ class User(AbstractUser):
         verbose_name="Аватар",
         help_text="Загрузите свой аватар",
     )
+    telegram_id = models.CharField(max_length=255, verbose_name='ИД телеграм', help_text='Укажите ваш телеграм ИД', null=True, blank=True)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 

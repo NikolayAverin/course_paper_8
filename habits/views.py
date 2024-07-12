@@ -5,6 +5,7 @@ from habits.serializers import HabitSerializer
 
 
 class HabitCreateApiView(CreateAPIView):
+    """Создание привычки"""
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
 
@@ -16,20 +17,24 @@ class HabitCreateApiView(CreateAPIView):
 
 
 class HabitListApiView(ListAPIView):
+    """Просмотр списка привычек"""
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
 
 
 class HabitRetrieveApiView(RetrieveAPIView):
+    """Просмотр одной привычки"""
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
 
 
 class HabitUpdateApiView(UpdateAPIView):
+    """Изменение привычки"""
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
 
 
 class HabitDestroyApiView(DestroyAPIView):
+    """Удаление привычки"""
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
