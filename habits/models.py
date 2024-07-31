@@ -63,7 +63,9 @@ class Habit(models.Model):
         verbose_name="Признак публичной привычки",
         help_text="Выберите, является ли привычка публичной",
     )
-    next_date = models.DateField(auto_now_add=True, verbose_name="Дата следующего выполнения")
+    next_date = models.DateField(
+        auto_now_add=True, verbose_name="Дата следующего выполнения"
+    )
 
     def __str__(self):
         return f"{self.description}: {self.time} в {self.place}"

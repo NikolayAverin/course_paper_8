@@ -1,6 +1,7 @@
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
+
 from users.models import User
 
 
@@ -21,4 +22,6 @@ class UserTestCase(APITestCase):
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(User.objects.count(), 2)
-        self.assertEqual(str(User.objects.get(email="test2@test.com")), "test2@test.com")
+        self.assertEqual(
+            str(User.objects.get(email="test2@test.com")), "test2@test.com"
+        )
