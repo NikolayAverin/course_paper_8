@@ -9,4 +9,4 @@ def send_tg_message(chat_id, message):
         "chat_id": chat_id,
         "text": message,
     }
-    requests.get(f'{settings.TG_URL}{settings.TG_BOT_TOKEN}/sendMessage', params=params)
+    requests.get(f"{settings.TG_URL}{settings.TG_BOT_TOKEN}/sendMessage", params=params)

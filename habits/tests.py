@@ -11,9 +11,15 @@ class HabitsTestCase(APITestCase):
 
     def setUp(self):
         self.user = User.objects.create(email="test@test.com")
-        self.habit = Habit.objects.create(owner=self.user, place="Test place", time="morning",
-                                          description="Test description", is_pleasant_habit=False, time_to_complete=10,
-                                          is_public=True)
+        self.habit = Habit.objects.create(
+            owner=self.user,
+            place="Test place",
+            time="morning",
+            description="Test description",
+            is_pleasant_habit=False,
+            time_to_complete=10,
+            is_public=True,
+        )
         self.client.force_authenticate(user=self.user)
 
     def test_habit_create(self):
@@ -30,7 +36,10 @@ class HabitsTestCase(APITestCase):
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Habit.objects.count(), 2)
-        self.assertEqual(str(Habit.objects.get(place="Test place")), "Test description: morning в Test place")
+        self.assertEqual(
+            str(Habit.objects.get(place="Test place")),
+            "Test description: morning в Test place",
+        )
 
     def test_habit_list(self):
         """Список привычек"""
@@ -64,12 +73,20 @@ class HabitsTestCase(APITestCase):
 
 class ValidatorsTestCase(APITestCase):
     """Тесты для валидаторов"""
+
     def setUp(self):
         self.user = User.objects.create(email="test@test.com")
         self.client.force_authenticate(user=self.user)
-        self.habit = Habit.objects.create(id=1, owner=self.user, place="Test place", time="morning",
-                                          description="Test description", is_pleasant_habit=False, time_to_complete=10,
-                                          is_public=True)
+        self.habit = Habit.objects.create(
+            id=1,
+            owner=self.user,
+            place="Test place",
+            time="morning",
+            description="Test description",
+            is_pleasant_habit=False,
+            time_to_complete=10,
+            is_public=True,
+        )
 
     def test_time_to_complete_validator(self):
         """Проверка на время выполнения"""
